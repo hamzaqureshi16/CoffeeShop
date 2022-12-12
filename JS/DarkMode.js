@@ -27,3 +27,45 @@ function Light(btn){
     btn.style.color = "white";
     btn.setAttribute("onclick", "Dark(this)");
 }
+
+function FrontPageDark(button){
+    var body = document.body;
+    var nav = document.getElementById("nav");
+    var btn = document.getElementsByClassName("btn");
+    var all = document.getElementsByTagName("*");
+    nav.classList.add("bg-dark");
+    body.style.backgroundColor = "#000019";
+
+    
+
+    for(var i = 0; i < all.length; i++){
+        all[i].style.color = "white";
+    }
+    for(var i = 0; i < btn.length; i++){
+        btn[i].style.backgroundColor = "white";
+        btn[i].style.color = "black";}
+
+
+    button.value = "Light Mode";
+    button.setAttribute("onclick", "FrontPageLight(this)");
+}
+
+function FrontPageLight(button){
+    var body = document.body;
+    var nav = document.getElementById("nav");
+    var btn = document.getElementsByClassName("btn");
+    var all = document.getElementsByTagName("*");
+
+    nav.classList.remove("bg-dark");
+    body.style.backgroundColor = "white";
+    
+        for(var i = 0; i < all.length; i++){
+            all[i].style.color = "black";
+        }
+        for(var i = 0; i < btn.length; i++){
+            btn[i].style.backgroundColor = "#000019";
+            btn[i].style.color = "white";}
+       
+        button.value = "Dark Mode";
+        button.setAttribute("onclick", "FrontPageDark(this)");
+}
