@@ -46,49 +46,46 @@ var decreaseQuantity = (elem) =>{
    CalculateTotal();
 }
 
-function verifyCoupon(){
-  var userCoupon = document.getElementById('couponInput').value;
-  var coupons = JSON.parse(sessionStorage.getItem('coupons'));
-  var grandTotal = document.getElementById('grandTotal').innerHTML;
-  
-  //console.log(coupons[1]);
+function verifyCoupon(){//method to verify the user's coupon
+  var userCoupon = document.getElementById('couponInput').value;//gets coupon entered by user
+  var coupons = JSON.parse(sessionStorage.getItem('coupons'));//get valid coupons from storage
    
-  for(let i = 0; i < coupons.length ; i++){
-    if(userCoupon == coupons[i].text){
-      CalculateTotal(coupons[i].discount);
-      alert('Coupon Applied');
+  for(let i = 0; i < coupons.length ; i++){//iterates over the valid coupons
+    if(userCoupon == coupons[i].text){//checking if the user's coupon is valid or not
+      CalculateTotal(coupons[i].discount);//applying discount to the total bill
+      alert('Coupon Applied');//alert
       return;
     }
   }
+  alert('Invalid Coupon');//invalid coupon alert
 }
 
 //make method to generate random coupon codes
 var generateCoupon = () => {
 
-  var couponText = ['hamza','bushra','hunnain','khansa','noor','bijli'];
-  var index = Math.floor(Math.random() * (couponText.length));
-  var coupon = [];
+  var couponText = ['hamza','bushra','hunnain','khansa','noor','bijli'];//names that coupon will be generated from
+  var coupon = [];//coupons will be stored here along with their discounts in the from of object (array of objects)
 
   for(let j = 0 ; j < Math.floor(Math.random() * 6) ; j++){//generating random number of coupons
-    coupon[j] = 
-    {text : couponText[Math.floor(Math.random() * (couponText.length))],
+    coupon[j] =  {
+      text : couponText[Math.floor(Math.random() * (couponText.length))],
       discount : Math.random() * 0.25
-    }
+    }//generating random discount and selecting a keyword from the couponText array
      
-    for(let i = 0; i < (1 + Math.floor(Math.random() * 6)) ; i++){//for number of digits in coupon
-      coupon[j].text += Math.floor(Math.random() * 11);
+    for(let i = 0; i < (1 + Math.floor(Math.random() * 6)) ; i++){//for number of digits in coupon text
+      coupon[j].text += Math.floor(Math.random() * 11);//insert random numbers in the coupon text
       }
-  console.log(coupon[j]);
+      
+  
   }
   
-  sessionStorage.setItem('coupons',JSON.stringify(coupon));
-  // var test = couponText.toString();
-  // test = test.split(',');
+  sessionStorage.setItem('coupons',JSON.stringify(coupon));//finally storing the valid coupons in session storage 
+ 
   }
 
 //method that displays the items in the cart.
 var showCart = () => {
-  generateCoupon();
+  generateCoupon();//generating coupons first
   
 
 
@@ -172,7 +169,7 @@ var CalculateTotal = (discount = 0.0) => {
     document.getElementById('tax').innerHTML = '$' + tax.toFixed(2).toString();//displaying tax to the document
     total = '$' + total.toString();
     document.getElementById('total').innerHTML = total; // displaying the total product cost to the document
-    console.log(discount +' '+grandTotal);
+    
 
     if(discount == 0.0){
       document.getElementById('grandTotal').innerHTML = '$' + grandTotal.toString();//displaying the grand total product cost to the document
