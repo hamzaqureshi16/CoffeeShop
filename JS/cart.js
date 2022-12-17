@@ -25,18 +25,73 @@ for(var i = 0; i < products.length; i++){//storing the objects as string in Sess
 }
 
 var increaseQuantity = (elem) =>{
-
-  elem.innerHTML =  (parseInt(elem.innerHTML) + 1).toString();
+  var quantity = parseInt(elem.innerHTML) + 1;
+  if( quantity >=0 ){
+    elem.innerHTML =  (quantity).toString();
+  }
+  else{
+    elem.innerHTML = '0';
+  }
+  
   CalculateTotal();
 }
 var decreaseQuantity = (elem) =>{
-
-  elem.innerHTML =  (parseInt(elem.innerHTML) - 1).toString();
-  CalculateTotal();
+  var quantity = parseInt(elem.innerHTML) - 1;
+  if( quantity >=0 ){
+    elem.innerHTML =  (quantity).toString();
+  }
+  else{
+    elem.innerHTML = '0';
+  }
+   CalculateTotal();
 }
+
+function verifyCoupon(){
+  var userCoupon = document.getElementById('couponInput').value;
+  var coupons = JSON.parse(sessionStorage.getItem('coupons'));
+  var grandTotal = document.getElementById('grandTotal').innerHTML;
+  
+  //console.log(coupons[1]);
+   
+  for(let i = 0; i < coupons.length ; i++){
+    if(userCoupon == coupons[i].text){
+      CalculateTotal(coupons[i].discount);
+      alert('Coupon Applied');
+      return;
+    }
+  }
+}
+
+//make method to generate random coupon codes
+var generateCoupon = () => {
+
+  var couponText = ['hamza','bushra','hunnain','khansa','noor','bijli'];
+  var index = Math.floor(Math.random() * (couponText.length));
+  var coupon = [];
+
+  for(let j = 0 ; j < Math.floor(Math.random() * 6) ; j++){//generating random number of coupons
+    coupon[j] = 
+    {text : couponText[Math.floor(Math.random() * (couponText.length))],
+      discount : Math.random() * 0.25
+    }
+     
+    for(let i = 0; i < (1 + Math.floor(Math.random() * 6)) ; i++){//for number of digits in coupon
+      coupon[j].text += Math.floor(Math.random() * 11);
+      }
+  console.log(coupon[j]);
+  }
+  
+  sessionStorage.setItem('coupons',JSON.stringify(coupon));
+  // var test = couponText.toString();
+  // test = test.split(',');
+  }
 
 //method that displays the items in the cart.
 var showCart = () => {
+  generateCoupon();
+  
+
+
   var outerID, product, removeID , priceID, quantityID,nameID;//variables to store the various tag used(minimizing code)
   
   
@@ -78,7 +133,7 @@ function removeItem(elem,name){
 
     sessionStorage.removeItem(name.innerHTML);//removing the product from the SessionStorage
     productArray.splice(productArray.indexOf(name.innerHTML),1);//removing the key from the productArray
- elem.remove();//removing the products enclosing <tr>
+    elem.remove();//removing the products enclosing <tr>
  
 CalculateTotal();//calaculates the new total
  
@@ -87,7 +142,7 @@ CalculateTotal();//calaculates the new total
 
 
 //method used to calculate the total bill of the cart
-var CalculateTotal = () => {
+var CalculateTotal = (discount = 0.0) => {
 
 
     
@@ -97,7 +152,7 @@ var CalculateTotal = () => {
     var tax = 0.12;//tax rate 12% of total
     var price, quantity;
     for(var i = 0 ; i < productArray.length ; i++){ // looping over each product
-        var product = JSON.parse(sessionStorage.getItem(productArray[i]));
+        var product = JSON.parse(sessionStorage.getItem(productArray[i]));//fetching products from Sessionstorage
         var name = product.name.replace(/\s/g, '');//constructing the id of the outer tag that encloses all the information of the products
         price = "price" +  name;
         quantity = "quantity" + name;
@@ -109,6 +164,7 @@ var CalculateTotal = () => {
         total +=  parseFloat(price.innerHTML.slice(1,price.innerHTML.length)) * parseFloat(quantity.innerHTML);//adding the price to the total(converting the price to double and removing the $ sign from it)
         shipping += (shippingRate * parseFloat(quantity.innerHTML));//adding the shipping cost according to the quantity
     }
+
     tax *= total// calculating the tax
     var grandTotal = (shipping + total + tax).toFixed(2); //grand total to be paid by the customer
      
@@ -116,13 +172,23 @@ var CalculateTotal = () => {
     document.getElementById('tax').innerHTML = '$' + tax.toFixed(2).toString();//displaying tax to the document
     total = '$' + total.toString();
     document.getElementById('total').innerHTML = total; // displaying the total product cost to the document
-    document.getElementById('grandTotal').innerHTML = '$' + grandTotal.toString();//displaying the grand total product cost to the document
-    
+    console.log(discount +' '+grandTotal);
 
+    if(discount == 0.0){
+      document.getElementById('grandTotal').innerHTML = '$' + grandTotal.toString();//displaying the grand total product cost to the document
+    }
+    else if(discount > 0.0){
+      document.getElementById('grandTotal').innerHTML = '$' + (grandTotal - (grandTotal * discount)).toFixed(2).toString();//displaying the grand total product cost to the document
+    }
+
+    
 
     
 }
 
+
+
 window.addEventListener('load', showCart); // when window is loaded the cart is shown on the document
+
 
 
