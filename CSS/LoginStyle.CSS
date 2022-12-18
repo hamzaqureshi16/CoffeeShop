@@ -96,3 +96,8 @@ li{
         background-color: #000019;
         color: white;
       }
+    .form input[type="submit"]:hover{
+            background-color: #000019;
+        }
+
+        

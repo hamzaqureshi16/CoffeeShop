@@ -24,28 +24,14 @@ for(var i = 0; i < products.length; i++){//storing the objects as string in Sess
     productArray[i] = products[i].name.toString();//storing the keys
 }
 
-var increaseQuantity = (elem) =>{
-  var quantity = parseInt(elem.innerHTML) + 1;
-  if( quantity >=0 ){
-    elem.innerHTML =  (quantity).toString();
-  }
-  else{
-    elem.innerHTML = '0';
-  }
-  
-  CalculateTotal();
-}
-var decreaseQuantity = (elem) =>{
-  var quantity = parseInt(elem.innerHTML) - 1;
-  if( quantity >=0 ){
-    elem.innerHTML =  (quantity).toString();
-  }
-  else{
-    elem.innerHTML = '0';
-  }
-   CalculateTotal();
-}
 
+var Checkout = () => {
+  //check if the textarea with id instructions is empty or not
+
+  if(document.getElementById('instructions').value == ''){
+  
+
+}
 function verifyCoupon(){//method to verify the user's coupon
   var userCoupon = document.getElementById('couponInput').value;//gets coupon entered by user
   var coupons = JSON.parse(sessionStorage.getItem('coupons'));//get valid coupons from storage
@@ -83,60 +69,40 @@ var generateCoupon = () => {
  
   }
 
-//method that displays the items in the cart.
-var showCart = () => {
-  generateCoupon();//generating coupons first
-  
-
-
-  var outerID, product, removeID , priceID, quantityID,nameID;//variables to store the various tag used(minimizing code)
-  
-  
-for(var i =0 ; i < productArray.length ; i++){//looping over the product keys
-
-    product = JSON.parse(sessionStorage.getItem(productArray[i]));//converting the string in SessionStorage to JSON
-    outerID = product.name.replace(/\s/g, '');//constructing the id of the outer tag that encloses all the information of the products
-    removeID = "remove" + outerID;//constructing the id of the remove button
-    priceID = "price" + outerID;//constructing the id of the price tag
-    nameID = "name" + outerID;
-    quantityID = "quantity" + outerID;//constructing the id of the quantity tag
-    //constructing the html code using multiline strings and interlpolation 
-    var htm = `<tr id = ${outerID}>
-    <th scope="row" class="border-0">
-      <div class="p-2">
-        <img src="${product.url}" alt="" width="70" class="img-fluid rounded shadow-sm">
-        <div class="ml-3 d-inline-block align-middle">
-          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle" id=${nameID}>${product.name}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: ${product.category}</span>
-        </div>
-      </div>
-    </th>
-    <td class="border-0 align-middle"><strong id=${priceID}>${product.price}</strong></td>
-    <td class="border-0 align-middle"><strong id=${quantityID}>${product.quantity}</strong></td>
-    <td class="border-0 align-middle"><a href="#" class="text-dark"><button class = "rounded-pill border-1 border-danger" onclick = "decreaseQuantity(${quantityID})">-</button><button class="fa fa-trash rounded-pill border-warning mx-2" id = ${removeID} onclick = "removeItem(${outerID},${nameID})"></button><button class = "rounded-pill border-1 border-success" onclick = "increaseQuantity(${quantityID})">+</button></a></td>
-  </tr>`;
-    document.getElementById('products').innerHTML += htm;//adding the html to the document
-}
-
-CalculateTotal();//total bill is calculated at the end
-
-//end of method
-}
-
-
+  var increaseQuantity = (elem) =>{
+    var quantity = parseInt(elem.innerHTML) + 1;
+    if( quantity >=0 ){
+      elem.innerHTML =  (quantity).toString();
+    }
+    else{
+      elem.innerHTML = '0';
+    }
+    
+    CalculateTotal();
+  }
+  var decreaseQuantity = (elem) =>{
+    var quantity = parseInt(elem.innerHTML) - 1;
+    if( quantity >=0 ){
+      elem.innerHTML =  (quantity).toString();
+    }
+    else{
+      elem.innerHTML = '0';
+    }
+     CalculateTotal();
+  }
 
 //method to remove a specific product => invocation if through onclick attribute of the button tag
 function removeItem(elem,name){
 
 
-    sessionStorage.removeItem(name.innerHTML);//removing the product from the SessionStorage
-    productArray.splice(productArray.indexOf(name.innerHTML),1);//removing the key from the productArray
-    elem.remove();//removing the products enclosing <tr>
- 
+  sessionStorage.removeItem(name.innerHTML);//removing the product from the SessionStorage
+  productArray.splice(productArray.indexOf(name.innerHTML),1);//removing the key from the productArray
+  elem.remove();//removing the products enclosing <tr>
+
 CalculateTotal();//calaculates the new total
- 
+
 //end of method
 }
-
 
 //method used to calculate the total bill of the cart
 var CalculateTotal = (discount = 0.0) => {
@@ -183,9 +149,43 @@ var CalculateTotal = (discount = 0.0) => {
     
 }
 
+//method that displays the items in the cart.
+var showCart = () => {
+  generateCoupon();//generating coupons first
+  
 
+
+  var outerID, product, removeID , priceID, quantityID,nameID;//variables to store the various tag used(minimizing code)
+  
+  
+for(var i =0 ; i < productArray.length ; i++){//looping over the product keys
+
+    product = JSON.parse(sessionStorage.getItem(productArray[i]));//converting the string in SessionStorage to JSON
+    outerID = product.name.replace(/\s/g, '');//constructing the id of the outer tag that encloses all the information of the products
+    removeID = "remove" + outerID;//constructing the id of the remove button
+    priceID = "price" + outerID;//constructing the id of the price tag
+    nameID = "name" + outerID;
+    quantityID = "quantity" + outerID;//constructing the id of the quantity tag
+    //constructing the html code using multiline strings and interlpolation 
+    var htm = `<tr id = ${outerID}>
+    <th scope="row" class="border-0">
+      <div class="p-2">
+        <img src="${product.url}" alt="" width="70" class="img-fluid rounded shadow-sm">
+        <div class="ml-3 d-inline-block align-middle">
+          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle" id=${nameID}>${product.name}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: ${product.category}</span>
+        </div>
+      </div>
+    </th>
+    <td class="border-0 align-middle"><strong id=${priceID}>${product.price}</strong></td>
+    <td class="border-0 align-middle"><strong id=${quantityID}>${product.quantity}</strong></td>
+    <td class="border-0 align-middle"><a href="#" class="text-dark"><button class = "rounded-pill border-1 border-danger" onclick = "decreaseQuantity(${quantityID})">-</button><button class="fa fa-trash rounded-pill border-warning mx-2" id = ${removeID} onclick = "removeItem(${outerID},${nameID})"></button><button class = "rounded-pill border-1 border-success" onclick = "increaseQuantity(${quantityID})">+</button></a></td>
+  </tr>`;
+    document.getElementById('products').innerHTML += htm;//adding the html to the document
+}
+
+CalculateTotal();//total bill is calculated at the end
+
+//end of method
+}
 
 window.addEventListener('load', showCart); // when window is loaded the cart is shown on the document
-
-
-

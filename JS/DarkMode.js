@@ -4,6 +4,9 @@ function Dark(btn){
     element.style.backgroundColor = "#000019";
    
     var login = document.getElementById("loginform");
+    if(login  == null){
+        login = document.getElementById("CheckoutForm");
+    }
     login.style.backgroundColor = "#000019";
     login.style.color = "white";
     
@@ -19,6 +22,9 @@ function Light(btn){
     element.style.backgroundColor = "#ddd";
    
     var login = document.getElementById("loginform");
+    if(login  == null){
+        login = document.getElementById("CheckoutForm");
+    }
     login.style.backgroundColor = "#f1f1f1";
     login.style.color = "black";
     
