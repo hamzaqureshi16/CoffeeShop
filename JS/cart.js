@@ -32,6 +32,7 @@ var Checkout = () => {
   
 
 }
+}
 function verifyCoupon(){//method to verify the user's coupon
   var userCoupon = document.getElementById('couponInput').value;//gets coupon entered by user
   var coupons = JSON.parse(sessionStorage.getItem('coupons'));//get valid coupons from storage
@@ -107,8 +108,6 @@ CalculateTotal();//calaculates the new total
 //method used to calculate the total bill of the cart
 var CalculateTotal = (discount = 0.0) => {
 
-
-    
     var shipping = 0;//current shipping cost
     var shippingRate = 2;//current shipping cost/item
     var total = 0;//total of items in cart
