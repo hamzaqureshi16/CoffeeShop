@@ -40,6 +40,7 @@ function verifyCoupon(){//method to verify the user's coupon
   for(let i = 0; i < coupons.length ; i++){//iterates over the valid coupons
     if(userCoupon == coupons[i].text){//checking if the user's coupon is valid or not
       CalculateTotal(coupons[i].discount);//applying discount to the total bill
+      document.getElementById('couponInput').disabled = 'true';//disabling the input field
       alert('Coupon Applied');//alert
       return;
     }

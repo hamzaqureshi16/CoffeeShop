@@ -48,7 +48,7 @@ li{
             margin: 10px;
         }
      
-    .form input{
+    .form input,select{
             border-radius: 5em;
             display: block;
             margin: 0 auto;
@@ -80,7 +80,7 @@ li{
             box-shadow: 0 5px #666;
             transform: translateY(4px);
         }
-    .form input:focus{
+    .form input:focus, select:focus{
             background-color: #ddd;
             outline: none;
         }
