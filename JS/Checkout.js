@@ -1,8 +1,13 @@
 var verifyNumber = (number) => {
-
+    
     
 }
 
-var form = document.getElementById('CheckoutForm').addEventListener('submit',() =>{
-    
+document.getElementById('CheckoutForm').addEventListener('submit',() =>{
+     verifyNumber(document.getElementById('phone'));
+  
+
+  
 });
+
+

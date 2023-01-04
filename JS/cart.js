@@ -1,4 +1,4 @@
-var productArray = [];//stores all the keys for the SessionStorage
+
 var products = [{
     name:'Cartier watch',
     price : '$79.00',
@@ -20,8 +20,8 @@ var products = [{
 }];//dummy data of chosen products
 
 for(var i = 0; i < products.length; i++){//storing the objects as string in SessionStorage
-    sessionStorage.setItem(products[i].name.toString(), JSON.stringify(products[i]));
-    productArray[i] = products[i].name.toString();//storing the keys
+    localStorage.setItem('products', JSON.stringify(products));
+    
 }
 
 
@@ -35,7 +35,7 @@ var Checkout = () => {
 }
 function verifyCoupon(){//method to verify the user's coupon
   var userCoupon = document.getElementById('couponInput').value;//gets coupon entered by user
-  var coupons = JSON.parse(sessionStorage.getItem('coupons'));//get valid coupons from storage
+  var coupons = JSON.parse(localStorage.getItem('coupons'));//get valid coupons from storage
    
   for(let i = 0; i < coupons.length ; i++){//iterates over the valid coupons
     if(userCoupon == coupons[i].text){//checking if the user's coupon is valid or not
@@ -67,7 +67,7 @@ var generateCoupon = () => {
   
   }
   
-  sessionStorage.setItem('coupons',JSON.stringify(coupon));//finally storing the valid coupons in session storage 
+  localStorage.setItem('coupons',JSON.stringify(coupon));//finally storing the valid coupons in session storage 
  
   }
 
@@ -96,9 +96,14 @@ var generateCoupon = () => {
 //method to remove a specific product => invocation if through onclick attribute of the button tag
 function removeItem(elem,name){
 
+  var prods = JSON.parse(localStorage.getItem('products'));//getting the products from the SessionStorage
+ 
+  var index = prods.indexOf(name.innerHTML);//getting the index of the product to be removed
+  prods.splice(index,1);//removing the product from the array
+  localStorage.setItem('products',JSON.stringify(prods));//updating the SessionStorage
 
-  sessionStorage.removeItem(name.innerHTML);//removing the product from the SessionStorage
-  productArray.splice(productArray.indexOf(name.innerHTML),1);//removing the key from the productArray
+  
+ 
   elem.remove();//removing the products enclosing <tr>
 
 CalculateTotal();//calaculates the new total
@@ -114,8 +119,9 @@ var CalculateTotal = (discount = 0.0) => {
     var total = 0;//total of items in cart
     var tax = 0.12;//tax rate 12% of total
     var price, quantity;
-    for(var i = 0 ; i < productArray.length ; i++){ // looping over each product
-        var product = JSON.parse(sessionStorage.getItem(productArray[i]));//fetching products from Sessionstorage
+    var prods = JSON.parse(localStorage.getItem('products'))
+    for(var i = 0 ; i < prods.length ; i++){ // looping over each product
+        var product = prods[i];//fetching products from Sessionstorage
         var name = product.name.replace(/\s/g, '');//constructing the id of the outer tag that encloses all the information of the products
         price = "price" +  name;
         quantity = "quantity" + name;
@@ -156,11 +162,11 @@ var showCart = () => {
 
 
   var outerID, product, removeID , priceID, quantityID,nameID;//variables to store the various tag used(minimizing code)
+  var prods = JSON.parse(localStorage.getItem('products'));
   
-  
-for(var i =0 ; i < productArray.length ; i++){//looping over the product keys
+for(var i =0 ; i < prods.length ; i++){//looping over the product keys
 
-    product = JSON.parse(sessionStorage.getItem(productArray[i]));//converting the string in SessionStorage to JSON
+    product = prods[i]//converting the string in SessionStorage to JSON
     outerID = product.name.replace(/\s/g, '');//constructing the id of the outer tag that encloses all the information of the products
     removeID = "remove" + outerID;//constructing the id of the remove button
     priceID = "price" + outerID;//constructing the id of the price tag

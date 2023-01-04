@@ -1,7 +1,0 @@
-<iframe src="CoffeeLogin.html" height="200" width="100%" frameborder="0"></iframe>
-coffee tutorial
-tips and tricks
-milk, sugar and retc option in menu page;
-cold and hot brew
-make general overlay for items in menu
-tell at checkout that coupon has been applied
