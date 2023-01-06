@@ -21,8 +21,8 @@ var products = [{
 
 for(var i = 0; i < products.length; i++){//storing the objects as string in SessionStorage
     localStorage.setItem('products', JSON.stringify(products));
-    
 }
+localStorage.setItem('countItems',products.length);
 
 
 var Checkout = () => {
@@ -102,10 +102,11 @@ function removeItem(elem,name){
   prods.splice(index,1);//removing the product from the array
   localStorage.setItem('products',JSON.stringify(prods));//updating the SessionStorage
 
-  
- 
-  elem.remove();//removing the products enclosing <tr>
 
+  elem.remove();//removing the products enclosing <tr>
+  var newCount = JSON.parse(localStorage.getItem('countItems')) -1;
+
+  localStorage.setItem('countItems',newCount);
 CalculateTotal();//calaculates the new total
 
 //end of method
