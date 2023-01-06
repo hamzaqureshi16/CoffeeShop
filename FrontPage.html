@@ -6,46 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - Brand</title>
 
+
+
+    
+  
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
-    <style>
-
-.badge {
-  padding-left: 9px;
-  padding-right: 9px;
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  border-radius: 9px;
-}
-
-.label-warning[href],
-.badge-warning[href] {
-  background-color: #c67605;
-}
-#lblCartCount {
-    font-size: 12px;
-    background: #ff0000;
-    color: #fff;
-    padding: 0 4px;
-    vertical-align: top;
-    margin-left: -10px; 
-}
-    </style>
+    <link rel="stylesheet" href="./CSS/FrontPage.CSS">
 </head>
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="--bs-body-bg: var(--bs-blue);background: #622a19;">
         <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-coffee" id="brand-logo"></i></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-2" style="color: var(--bs-navbar-disabled-color);">
+            <div class="collapse navbar-collapse" id="navcol-3" style="color: var(--bs-navbar-disabled-color);">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);margin: 0px;padding: 8px;padding-top: 8px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;">Contact Us</a><a class="nav-link" href="#">Contact Us</a><a class="nav-link" href="#">Contact Us</a><a class="nav-link" href="#">Third Item</a></li>
-                </ul><a href="#" style="color: rgb(255,255,255);margin: 0px;padding: 8px;padding-top: 24px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;">&nbsp;Order Now</a>
+                    <li class="nav-item"><a class="nav-link active" href="#" style="padding-top: 0px;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255); padding-top: 0px;">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);margin: 0px;padding: 8px;padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews" style="color: rgb(255,255,255);margin: 0px;padding: 8px;padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);padding-top: 0px; ">Order Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255); padding-top: 0px; ">Book a table</a></li>
+                    
+                    
+                </ul>
                 <div class="btn-group" role="group" style="margin-left: 968px;"><button onclick="openLogin()" class="btn btn-primary" type="button" style="margin-right: 16px;">Login</button><button class="btn btn-primary" type="button" onclick="openSignUp()">Sign Up</button></div>
                 <img src="./imgs/cart.svg" height="30px" width="30px" onclick="openCart()">
                 <span class='badge badge-warning' id='lblCartCount'>  </span>
@@ -91,7 +78,65 @@
             </div>
         </div>
     </section>
-    <div style="background:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)),url(assets/img/review.jpg) no-repeat center center fixed #000;background-size:cover;">
+
+
+
+     <!-- ======= Book A Table Section ======= -->
+     <section id="book-a-table" class="book-a-table">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Reservation</h2>
+            <p>Book a Table</p>
+          </div>
+  
+          <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3">
+                <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3">
+                <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <div class="validate"></div>
+              </div>
+              <div class="col-lg-4 col-md-6 form-group mt-3">
+                <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                <div class="validate"></div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+              <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Book a Table</button></div>
+          </form>
+  
+        </div>
+      </section><!-- End Book A Table Section -->
+
+      
+      
+
+
+    <div style="background:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)),url(assets/img/review.jpg) no-repeat center center fixed #000;background-size:cover;" id="reviews">
         <div class="container" style="padding-right:30px;padding-left:30px;padding-top:35px;padding-bottom:35px;">
             <h1 style="color:rgb(255,255,255);margin-bottom:5px;font-size:48px;font-weight:bold;text-align:center;">Reviews</h1>
             <p style="font-size:18px;font-weight:bold;text-align:center;color:rgb(255,255,255);margin-bottom:30px;">See what the hype is all about and check out our Yelp to see&nbsp;<a style="text-decoration:underline;color:white;" href="https://www.yelp.com/biz/ristorante-da-maria-san-jose-2" target="_blank">all our reviews!</a></p>
