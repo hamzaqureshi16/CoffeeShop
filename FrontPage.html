@@ -17,24 +17,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
     <link rel="stylesheet" href="./CSS/FrontPage.CSS">
-</head>
+    <link rel="shortcut icon" href="./imgs/icontest.png" type="image/x-icon">
+ </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="--bs-body-bg: var(--bs-blue);background: #622a19;">
-        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-coffee" id="brand-logo"></i></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="--bs-body-bg: var(--bs-blue);background: #c46704;">
+        <img src="./imgs/new logo.png" height="50px" width="60px" alt="" > 
             <div class="collapse navbar-collapse" id="navcol-3" style="color: var(--bs-navbar-disabled-color);">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#" style="padding-top: 0px;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255); padding-top: 0px;">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);margin: 0px;padding: 8px;padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#reviews" style="color: rgb(255,255,255);margin: 0px;padding: 8px;padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Reviews</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);padding-top: 0px; ">Order Now</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255); padding-top: 0px; ">Book a table</a></li>
+                    <li class="nav-item"><a class="nav-link active fontlarge" href="#" style="padding-top: 0px; font-size: large;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#aboutus" style="color: rgb(255,255,255); padding-top: 0px;font-size: large;">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactus" style="color: rgb(255,255,255);margin: 0px;padding: 8px; font-size: large; padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews" style="color: rgb(255,255,255);margin: 0px;padding: 8px; font-size: large; padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);padding-top: 0px; font-size: large;">Order Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#book-a-table" style="color: rgb(255,255,255); padding-top: 0px; font-size: large;">Book a table</a></li>
                     
                     
                 </ul>
-                <div class="btn-group" role="group" style="margin-left: 968px;"><button onclick="openLogin()" class="btn btn-primary" type="button" style="margin-right: 16px;">Login</button><button class="btn btn-primary" type="button" onclick="openSignUp()">Sign Up</button></div>
-                <img src="./imgs/cart.svg" height="30px" width="30px" onclick="openCart()">
+                <div class="btn-group" role="group" style="margin-left: 810px;"><button onclick="openLogin()" class="btn btn-primary rounded" type="button" style="margin-right: 16px; margin-top: 5px; height: 40px;">Login</button><button class="btn btn-primary rounded" type="button" onclick="openSignUp()" style="height: 40px;  margin-top:5px; margin-bottom: 5px; ">Sign&nbsp;Up</button></div>
+                <img src="./imgs/cart.svg" height="30px" width="30px" onclick="openCart()" style="margin-left: 20px;" >
                 <span class='badge badge-warning' id='lblCartCount'>  </span>
             </div>
             
@@ -54,7 +55,7 @@
                 <div class="col-lg-6 order-lg-2">
                     <div class="p-5"><img class="rounded-circle img-fluid" src="assets/img/Coffee-Background2.jpg"></div>
                 </div>
-                <div class="col-lg-6 order-lg-1">
+                <div class="col-lg-6 order-lg-1" id="aboutus">
                     <div class="p-5">
                         <h2 class="display-4">Our Story....</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
@@ -90,7 +91,7 @@
             <p>Book a Table</p>
           </div>
   
-          <form action="javascript:void(0)" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+          <form action="javascript:void(0)" method="post" role="form" class="php-email-form"  id="tableform" >
             <div class="row">
               <div class="col-lg-4 col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -105,15 +106,15 @@
                 <div class="validate"></div>
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3">
-                <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <input type="date" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                 <div class="validate"></div>
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3">
-                <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                <input type="time" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                 <div class="validate"></div>
               </div>
               <div class="col-lg-4 col-md-6 form-group mt-3">
-                <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                <input type="number" class="form-control" name="people" id="people" placeholder="# of people" min="1" max="20" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
                 <div class="validate"></div>
               </div>
             </div>
@@ -126,7 +127,7 @@
               <div class="error-message"></div>
               <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
             </div>
-            <div class="text-center"><button type="submit">Book a Table</button></div>
+            <div class="text-center"><button type="submit" id="submit" value="submit">Book a Table</button></div>
           </form>
   
         </div>
@@ -211,7 +212,7 @@
                             <div id="successfail-1"></div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="contactus">
                         <div class="col-12 col-md-6" id="message-1">
                             <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*required)</small></small></h2>
                             <div class="form-group mb-3"><label class="form-label" for="from-name">Name</label><span class="required-input">*</span>
