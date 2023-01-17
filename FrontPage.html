@@ -18,11 +18,14 @@
     <link rel="stylesheet" href="assets/css/styles.min.css">
     <link rel="stylesheet" href="./CSS/FrontPage.CSS">
     <link rel="shortcut icon" href="./imgs/icontest.png" type="image/x-icon">
+
+
+    <!--menu css files-->
  </head>
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="--bs-body-bg: var(--bs-blue);background: #c46704;">
-        <img src="./imgs/new logo.png" height="50px" width="60px" alt="" > 
+        <img src="./assets/img/new logo.png" height="50px" width="60px" alt="" > 
         <a class="navbar-brand bg-dark rounded" style="padding: 6px 6px; font-size: large; margin-left: 0px; margin-right: 20px;">Cawfee Tawk </a>
             <div class="collapse navbar-collapse" id="navcol-3" style="color: var(--bs-navbar-disabled-color);">
                 <ul class="navbar-nav ml-auto">
@@ -30,13 +33,13 @@
                     <li class="nav-item"><a class="nav-link" href="#aboutus" style="color: rgb(255,255,255); padding-top: 0px;font-size: large;">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contactus" style="color: rgb(255,255,255);margin: 0px;padding: 8px; font-size: large; padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#reviews" style="color: rgb(255,255,255);margin: 0px;padding: 8px; font-size: large; padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Reviews</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);padding-top: 0px; font-size: large;">Order Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu" style="color: rgb(255,255,255);padding-top: 0px; font-size: large;">Order Now</a></li>
                     <li class="nav-item"><a class="nav-link" href="#book-a-table" style="color: rgb(255,255,255); padding-top: 0px; font-size: large;">Book a table</a></li>
                     
                     
                 </ul>
                 <div class="btn-group" role="group" style="margin-left: 700px;"><button onclick="openLogin()" class="btn btn-primary rounded" type="button" style="margin-right: 16px; margin-top: 5px; height: 40px;">Login</button><button class="btn btn-primary rounded" type="button" onclick="openSignUp()" style="height: 40px;  margin-top:5px; margin-bottom: 5px; ">Sign&nbsp;Up</button></div>
-                <img src="./imgs/cart.svg" height="30px" width="30px" onclick="openCart()" style="margin-left: 20px;" >
+                <img src="./assets/img/cart.svg" height="30px" width="30px" onclick="openCart()" style="margin-left: 20px;" >
                 <span class='badge badge-warning' id='lblCartCount'>  </span>
             </div>
             
@@ -81,7 +84,11 @@
         </div>
     </section>
 
+    <!--section for menu-->
+    <section id="menu">
+        <iframe src="./testMenu.html" frameborder="2" width="100%" height="500"></iframe>
 
+    </section>
 
      <!-- ======= Book A Table Section ======= -->
      <section id="book-a-table" class="book-a-table">
@@ -202,6 +209,7 @@
             </div>
         </div>
     </div>
+
     <section>
         <div>
             <div class="container-fluid">
