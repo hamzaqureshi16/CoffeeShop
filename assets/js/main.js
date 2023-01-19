@@ -273,8 +273,8 @@
         "id": 1,
         "name": "Espresso Shot",
         "price": 200,
-        "url": "../img/menu/espresso.jpg",
-        'categoy':'coffee',
+        "url": "./assets/img/menu/espresso.jpg",
+        'categoy':'specialty',
         'ingredients': 'coffe beans',
       },
 
@@ -286,34 +286,25 @@
         once: true,
         mirror: false
       })
-
-    //   for(var i = 0 ; i < ProductCatalog.length; i++){
-    //     document.getElementById('main_menu').innerHTML+=`<div class="col-lg-6 menu-item filter-starters">
-    //           <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-    //           <div class="menu-content">
-    //             <a href="#">Lobster Bisque</a><span>$5.95</span>
-    //           </div>
-    //           <div class="menu-ingredients">
-    //             Lorem, deren, trataro, filede, nerada 
-    //             <button class="btn btn-success" style="margin-left: 230px;" >buy</button>
-    //           </div>
-             
-    //         </div>`;
-    //   }
-     
-  for(var i =0 ; i < 5; i++){
-    document.getElementById('main_menu').innerHTML+=`<div class="col-lg-6 menu-item filter-starters">
-  <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-  <div class="menu-content">
-    <a href="#">Lobster Bisque</a><span>$5.95</span>
-  </div>
-  <div class="menu-ingredients">
-    Lorem, deren, trataro, filede, nerada 
-    <button class="btn btn-success" style="margin-left: 230px;" >buy</button>
-  </div>
- 
-</div>`;
-  }
+      
+      const menu =document.getElementById('main_menu'); 
+      for(var i = 0; i < ProductCatalog.length; i++){
+      menu.innerHTML+=`
+          <div class="col-lg-6 menu-item filter-${ProductCatalog[i].categoy}">
+              <img src="${ProductCatalog[i].url}" class="menu-img" alt="">
+              <div class="menu-content">
+              <a href="#">${ProductCatalog[i].name}</a><span>$${ProductCatalog[i].price}</span>
+            </div>
+            <div class="menu-ingredients">
+              ${ProductCatalog[i].ingredients}
+            </div>
+            
+            &nbsp;
+            &nbsp;
+            <button class="bg-success rounded">buy</button>
+            <button class="bg-primary rounded">Add to cart</button>
+          </div>`;
+      }
 }
     
 
