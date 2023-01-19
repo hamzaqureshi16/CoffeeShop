@@ -1,30 +1,3 @@
-
-var products = [{
-    name:'Cartier watch',
-    price : '$79.00',
-    url : 'https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg',
-    category : 'Watches',
-    quantity : 3
-}, {
-    name:'Lumix camera lense',
-    price : '$79.00',
-    url : 'https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg',
-    category : 'Camera',
-    quantity : 3
-},{
-    name:'Gray Nike running shoe',
-    price : '$79.00',
-    url : 'https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg',
-    category : 'Shoes',
-    quantity : 3
-}];//dummy data of chosen products
-
-for(var i = 0; i < products.length; i++){//storing the objects as string in SessionStorage
-    localStorage.setItem('products', JSON.stringify(products));
-}
-localStorage.setItem('countItems',products.length);
-
-
 var Checkout = () => {
   //check if the textarea with id instructions is empty or not
 
@@ -79,6 +52,8 @@ var generateCoupon = () => {
     else{
       elem.innerHTML = '0';
     }
+
+    
     
     CalculateTotal();
   }
@@ -164,15 +139,17 @@ var showCart = () => {
 
   var outerID, product, removeID , priceID, quantityID,nameID;//variables to store the various tag used(minimizing code)
   var prods = JSON.parse(localStorage.getItem('products'));
-  
+  localStorage.setItem('countItems',prods.length);
 for(var i =0 ; i < prods.length ; i++){//looping over the product keys
-
+    console.log(prods[i]);
     product = prods[i]//converting the string in SessionStorage to JSON
     outerID = product.name.replace(/\s/g, '');//constructing the id of the outer tag that encloses all the information of the products
     removeID = "remove" + outerID;//constructing the id of the remove button
     priceID = "price" + outerID;//constructing the id of the price tag
     nameID = "name" + outerID;
     quantityID = "quantity" + outerID;//constructing the id of the quantity tag
+
+    console.log(quantityID);
     //constructing the html code using multiline strings and interlpolation 
     var htm = `<tr id = ${outerID}>
     <th scope="row" class="border-0">

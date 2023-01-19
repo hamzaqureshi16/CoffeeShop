@@ -4,6 +4,42 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+const BuyNow = (id) => console.log('boughtnow');
+const AddtoCart = (id) =>{
+  console.log('addedtocart');
+  var cart = JSON.parse(localStorage.getItem('products'));
+  
+  if(cart === null){
+    localStorage.setItem('products', JSON.stringify([]));
+    cart = JSON.parse(localStorage.getItem('products'));
+  }
+
+  var ProductCatalog = JSON.parse(localStorage.getItem('ProductCatalog'));
+  var product = ProductCatalog.find(x => x.id == id);
+  console.log(product.name);
+  
+  var productInCart = cart.find(x => x.name == product.name.replace(/\s/g, ''));
+  if(productInCart){
+    console.log('product already exists in cart');
+    productInCart.quantity++;
+  }else{
+    console.log('product does not exist in cart');
+    
+    productInCart = {
+      name: product.name.replace(/\s/g, ''),
+      quantity: 1,
+      price: product.price,
+      category: product.categoy,
+      url : product.url
+    }
+    cart.push(productInCart);
+  }
+  localStorage.setItem('products', JSON.stringify(cart));
+  
+  console.log(productInCart);
+  
+}
 (function() {
     "use strict";
   
@@ -277,8 +313,18 @@
         'categoy':'specialty',
         'ingredients': 'coffe beans',
       },
+      {
+        "id": 2,
+        "name": "Espresso Machiato",
+        "price": 250,
+        "url": "./assets/img/menu/espresso-machiato.jpg",
+        'categoy':'starters',
+        'ingredients': 'coffe beans, cream, milk',
+      },
 
     ]
+
+    localStorage.setItem('ProductCatalog', JSON.stringify(ProductCatalog));
     window.addEventListener('load', () => {
       AOS.init({
         duration: 1000,
@@ -301,8 +347,8 @@
             
             &nbsp;
             &nbsp;
-            <button class="bg-success rounded">buy</button>
-            <button class="bg-primary rounded">Add to cart</button>
+            <button class="bg-success rounded" onclick="BuyNow(${ProductCatalog[i].id})">buy</button>
+            <button class="bg-primary rounded" onclick="AddtoCart(${ProductCatalog[i].id})">Add to cart</button>
           </div>`;
       }
 }
@@ -312,5 +358,7 @@
     );
   
   })()
+
+
 
 
