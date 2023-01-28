@@ -13,11 +13,11 @@
 
 <div id="topnav">
     <button class="darkmode" onclick="Dark(this)" id="darkmode">Dark Mode</button>
-    <img src="./imgs/CoffeeLogo.png" alt="">
+    <img src="./assets//img//CoffeeLogo.png" alt="">
     
 </div>
     <h1>Sign Up</h1>
-    <form action="CoffeeLogin.html" method="POST" class="form" autocomplete="off" id="loginform">
+    <form action="javascript:void(0)" method="POST" class="form"  id="loginform">
         <label for="username">Username</label>
     <input type="text" name="username" id="username">
     <label for="password">Password</label>
@@ -35,10 +35,11 @@
     <input type="text" name="address" id="address">
     
     <label for="contact">Contact</label>
-    <input type="tel" pattern="" name="contact" id="contact">
+    <input type="tel"  name="contact" id="contact">
     
-    <input type="submit" value="Sign Up">
+    <input type="submit" value="Sign Up" id="submit">
     </form>
 
 </body>
+<script type="module"  src="./JS/RegisterUser.js"></script> 
 </html>

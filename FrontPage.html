@@ -27,8 +27,8 @@
     <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="--bs-body-bg: var(--bs-blue);background: #c46704;">
         <img src="./assets/img/new logo.png" height="50px" width="60px" alt="" > 
         <a class="navbar-brand bg-dark rounded" style="padding: 6px 6px; font-size: large; margin-left: 0px; margin-right: 20px;">Cawfee Tawk </a>
-            <div class="collapse navbar-collapse" id="navcol-3" style="color: var(--bs-navbar-disabled-color);">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse" id="navcol-3" style="color: var(--bs-navbar-disabled-color);" >
+                <ul class="navbar-nav ml-auto" id="navlist">
                     <li class="nav-item"><a class="nav-link active fontlarge" href="#" style="padding-top: 0px; font-size: large;">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#aboutus" style="color: rgb(255,255,255); padding-top: 0px;font-size: large;">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contactus" style="color: rgb(255,255,255);margin: 0px;padding: 8px; font-size: large; padding-top: 0px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Contact Us</a></li>
@@ -38,13 +38,16 @@
                     
                     
                 </ul>
-                <div class="btn-group" role="group" style="margin-left: 700px;"><button onclick="openLogin()" class="btn btn-primary rounded" type="button" style="margin-right: 16px; margin-top: 5px; height: 40px;">Login</button><button class="btn btn-primary rounded" type="button" onclick="openSignUp()" style="height: 40px;  margin-top:5px; margin-bottom: 5px; ">Sign&nbsp;Up</button></div>
-                <img src="./assets/img/cart.svg" height="30px" width="30px" onclick="openCart()" style="margin-left: 20px;" >
+                <div class="btn-group" role="group" style="margin-left: 700px;" id="btns">
+                    <button onclick="openLogin()" class="btn btn-primary rounded" type="button" style="margin-right: 16px; margin-top: 5px; height: 40px;" id="loginbtn">Login</button>
+                    <button class="btn btn-primary rounded" type="button" onclick="openSignUp()" style="height: 40px;  margin-top:5px; margin-bottom: 5px; " id="signupbtn">Sign&nbsp;Up</button>
+                </div>
+                <img src="./assets/img/cart.svg" height="30px" width="30px" onclick="openCart()" style="margin-left: 5px;" id="carticon" >
                 <span class='badge badge-warning' id='lblCartCount'>  </span>
             </div>
             
-        </div>
-    </nav>
+            </div>
+        </nav>
     <header class="text-center text-white masthead" style="background: url(&quot;assets/img/Coffee-Background1.jpg&quot;);">
         <div class="masthead-content">
             <div class="container">
@@ -61,7 +64,7 @@
                 </div>
                 <div class="col-lg-6 order-lg-1" id="aboutus">
                     <div class="p-5">
-                        <h2 class="display-4">Our Story....</h2>
+                        <h2 class="display-4 section-title">Our Story....</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
                     </div>
                 </div>

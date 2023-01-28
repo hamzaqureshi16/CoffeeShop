@@ -57,12 +57,7 @@ var generateCoupon = () => {
 
     //find product with name id in local storage
     var prods = JSON.parse(localStorage.getItem('products'));
-    for(var i = 0 ; i < prods.length ; i++){
-      if(prods[i].name == id){
-        prods[i].quantity = quantity;
-        break;
-      }
-    }
+    prods.find(x=> x.name == id).quantity = quantity;
     localStorage.setItem('products',JSON.stringify(prods));
 
     
@@ -81,15 +76,14 @@ var generateCoupon = () => {
 
     //find product with name id in local storage
     var prods = JSON.parse(localStorage.getItem('products'));
-    for(var i = 0 ; i < prods.length ; i++){
-      if(prods[i].name == id){
-        prods[i].quantity = quantity;
-        break;
-      }
+    if(quantity >=0){
+      prods.find(x=> x.name == id).quantity = quantity;
     }
     localStorage.setItem('products',JSON.stringify(prods));
      CalculateTotal();
-  }
+    }
+    
+  
 
 //method to remove a specific product => invocation if through onclick attribute of the button tag
 function removeItem(elem,name){
@@ -114,7 +108,7 @@ CalculateTotal();//calaculates the new total
 var CalculateTotal = (discount = 0.0) => {
 
     var shipping = 0;//current shipping cost
-    var shippingRate = 2;//current shipping cost/item
+    var shippingRate = 80;//current shipping cost/item
     var total = 0;//total of items in cart
     var tax = 0.12;//tax rate 12% of total
     var price, quantity;
@@ -129,24 +123,24 @@ var CalculateTotal = (discount = 0.0) => {
         quantity = document.getElementById(quantity);//getting the quantity element
         
 
-        total +=  parseFloat(price.innerHTML.slice(1,price.innerHTML.length)) * parseFloat(quantity.innerHTML);//adding the price to the total(converting the price to double and removing the $ sign from it)
+        total +=  parseFloat(price.innerHTML.slice(3,price.innerHTML.length)) * parseFloat(quantity.innerHTML);//adding the price to the total(converting the price to double and removing the $ sign from it)
         shipping += (shippingRate * parseFloat(quantity.innerHTML));//adding the shipping cost according to the quantity
     }
 
     tax *= total// calculating the tax
     var grandTotal = (shipping + total + tax).toFixed(2); //grand total to be paid by the customer
      
-    document.getElementById('shipping').innerHTML = "$" + shipping.toString();//displaying shipping cost to the document
-    document.getElementById('tax').innerHTML = '$' + tax.toFixed(2).toString();//displaying tax to the document
-    total = '$' + total.toString();
+    document.getElementById('shipping').innerHTML = "PKR " + shipping.toString();//displaying shipping cost to the document
+    document.getElementById('tax').innerHTML = 'PKR ' + tax.toFixed(2).toString();//displaying tax to the document
+    total = 'PKR ' + total.toString();
     document.getElementById('total').innerHTML = total; // displaying the total product cost to the document
     
 
     if(discount == 0.0){
-      document.getElementById('grandTotal').innerHTML = '$' + grandTotal.toString();//displaying the grand total product cost to the document
+      document.getElementById('grandTotal').innerHTML = 'PKR ' + grandTotal.toString();//displaying the grand total product cost to the document
     }
     else if(discount > 0.0){
-      document.getElementById('grandTotal').innerHTML = '$' + (grandTotal - (grandTotal * discount)).toFixed(2).toString();//displaying the grand total product cost to the document
+      document.getElementById('grandTotal').innerHTML = 'PKR ' + (grandTotal - (grandTotal * discount)).toFixed(2).toString();//displaying the grand total product cost to the document
     }
 
     
@@ -183,7 +177,7 @@ for(var i =0 ; i < prods.length ; i++){//looping over the product keys
         </div>
       </div>
     </th>
-    <td class="border-0 align-middle"><strong id=${priceID}>$${product.price}</strong></td>
+    <td class="border-0 align-middle"><strong id=${priceID}>PKR ${product.price}</strong></td>
     <td class="border-0 align-middle"><strong id=${quantityID}>${product.quantity}</strong></td>
     <td class="border-0 align-middle"><a href="#" class="text-dark"><button class = "rounded-pill border-1 border-danger" onclick = "decreaseQuantity(${quantityID})">-</button><button class="fa fa-trash rounded-pill border-warning mx-2" id = ${removeID} onclick = "removeItem(${outerID},${nameID})"></button><button class = "rounded-pill border-1 border-success" onclick = "increaseQuantity(${quantityID})">+</button></a></td>
   </tr>`;
@@ -195,4 +189,14 @@ CalculateTotal();//total bill is calculated at the end
 //end of method
 }
 
+
+
+var CheckOut = ()=>{
+  if(JSON.parse(localStorage.getItem('currentUser')) !== null){
+    window.location.href = "../Delived.html";
+  }
+  else{
+    window.location.href = "../Delivery.html";
+  }
+}
 window.addEventListener('load', showCart); // when window is loaded the cart is shown on the document

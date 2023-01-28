@@ -72,20 +72,61 @@ var verifyNumber = (number) => {//method to verify the mobile number
 
     }
     
+
+    var Logout = () =>{
+        console.log('logout');
+        localStorage.removeItem('currentUser');
+        window.location.href = "FrontPage.html";
+    }
 window.addEventListener('load', () => {
     document.getElementById('date').min = new Date().toISOString().split('T')[0];//min date that can be selected is today
-    
-    
     let maxDate = new Date();//get current date to set max date that can be set
     maxDate.setMonth(maxDate.getMonth() + 2);//add a 2 months to the current date
     document.getElementById('date').max = maxDate.toISOString().split('T')[0];//setting maximum date that can be selected
     
+
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    if(currentUser !== null){
+        console.log(currentUser);
+
+        console.log(document.getElementById('signupbtn'));
+        //remove the signupbtn and loginbtn
+       var logoutbtn = document.getElementById("loginbtn");
+       
+        document.getElementById('loginbtn').remove();
+        document.getElementById('signupbtn').remove();
+        
+        //add the logoutbtn
+        
+        //add the user name
+        var userName = document.createElement('h5');
+        userName.setAttribute('id','userName');
+        userName.setAttribute('class','text-light');
+        userName.innerHTML = currentUser.name;
+        userName.style.paddingTop = '6px';
+        userName.style.marginLeft = '-45px';
+        
+        
+        document.getElementById('btns').append(userName);
+        
+
+        logoutbtn.setAttribute('class','btn btn-outline-light btn-danger');
+        logoutbtn.innerHTML = 'Logout';
+        logoutbtn.setAttribute('onclick','Logout()');
+        document.getElementById('navlist').append(logoutbtn);
+       
+
+    }
 } );
+
+
 
 document.getElementById('tableform').addEventListener('submit',() =>{
     if(verifyNumber(document.getElementById('phone')) && VerifyDateTime(document.getElementById('date'),document.getElementById('time'))){
-      
+
     }
+
+    
         
 
 });

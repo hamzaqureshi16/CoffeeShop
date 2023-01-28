@@ -345,7 +345,7 @@ const AddtoCart = (id) =>{
           <div class="col-lg-6 menu-item filter-${ProductCatalog[i].categoy}">
               <img src="${ProductCatalog[i].url}" class="menu-img" alt="">
               <div class="menu-content">
-              <a href="#">${ProductCatalog[i].name}</a><span>$${ProductCatalog[i].price}</span>
+              <a href="#">${ProductCatalog[i].name}</a><span>PKR${ProductCatalog[i].price}</span>
             </div>
             <div class="menu-ingredients">
               ${ProductCatalog[i].ingredients}
