@@ -53,6 +53,18 @@ var generateCoupon = () => {
       elem.innerHTML = '0';
     }
 
+    var id =elem.attributes.id.value.replace('quantity','');
+
+    //find product with name id in local storage
+    var prods = JSON.parse(localStorage.getItem('products'));
+    for(var i = 0 ; i < prods.length ; i++){
+      if(prods[i].name == id){
+        prods[i].quantity = quantity;
+        break;
+      }
+    }
+    localStorage.setItem('products',JSON.stringify(prods));
+
     
     
     CalculateTotal();
@@ -65,6 +77,17 @@ var generateCoupon = () => {
     else{
       elem.innerHTML = '0';
     }
+    var id =elem.attributes.id.value.replace('quantity','');
+
+    //find product with name id in local storage
+    var prods = JSON.parse(localStorage.getItem('products'));
+    for(var i = 0 ; i < prods.length ; i++){
+      if(prods[i].name == id){
+        prods[i].quantity = quantity;
+        break;
+      }
+    }
+    localStorage.setItem('products',JSON.stringify(prods));
      CalculateTotal();
   }
 
@@ -160,7 +183,7 @@ for(var i =0 ; i < prods.length ; i++){//looping over the product keys
         </div>
       </div>
     </th>
-    <td class="border-0 align-middle"><strong id=${priceID}>${product.price}</strong></td>
+    <td class="border-0 align-middle"><strong id=${priceID}>$${product.price}</strong></td>
     <td class="border-0 align-middle"><strong id=${quantityID}>${product.quantity}</strong></td>
     <td class="border-0 align-middle"><a href="#" class="text-dark"><button class = "rounded-pill border-1 border-danger" onclick = "decreaseQuantity(${quantityID})">-</button><button class="fa fa-trash rounded-pill border-warning mx-2" id = ${removeID} onclick = "removeItem(${outerID},${nameID})"></button><button class = "rounded-pill border-1 border-success" onclick = "increaseQuantity(${quantityID})">+</button></a></td>
   </tr>`;

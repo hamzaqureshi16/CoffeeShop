@@ -7,7 +7,7 @@
 
 const BuyNow = (id) => console.log('boughtnow');
 const AddtoCart = (id) =>{
-  console.log('addedtocart');
+  
   var cart = JSON.parse(localStorage.getItem('products'));
   
   if(cart === null){
@@ -21,10 +21,14 @@ const AddtoCart = (id) =>{
   
   var productInCart = cart.find(x => x.name == product.name.replace(/\s/g, ''));
   if(productInCart){
-    console.log('product already exists in cart');
+    
     productInCart.quantity++;
+    // var currCount = JSON.parse(localStorage.getItem('countItems'));
+    // console.log(currCount)
+    // console.log('setting to '+)
+   
   }else{
-    console.log('product does not exist in cart');
+    
     
     productInCart = {
       name: product.name.replace(/\s/g, ''),
@@ -34,10 +38,12 @@ const AddtoCart = (id) =>{
       url : product.url
     }
     cart.push(productInCart);
+    localStorage.setItem('countItems',JSON.stringify(JSON.parse(localStorage.getItem('countItems'))+1))
+    console.log('setting to '+JSON.parse(localStorage.getItem('countItems')));
   }
   localStorage.setItem('products', JSON.stringify(cart));
   
-  console.log(productInCart);
+ 
   
 }
 (function() {
