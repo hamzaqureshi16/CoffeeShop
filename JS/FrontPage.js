@@ -62,10 +62,10 @@ var verifyNumber = (number) => {//method to verify the mobile number
             }
         }
         else{
-            //all other inputs are invalid
+            //all other inputs are valid
             //set custom validity of date
-            dateInput.setCustomValidity("Invalid Date");
-            return false;
+            dateInput.setCustomValidity("");
+            return  true;
         }
 
     }
@@ -120,11 +120,41 @@ window.addEventListener('load', () => {
 
 
 document.getElementById('tableform').addEventListener('submit',() =>{
+    console.log(verifyNumber(document.getElementById('phone')));
+    console.log(VerifyDateTime(document.getElementById('date'),document.getElementById('time')));
     if(verifyNumber(document.getElementById('phone')) && VerifyDateTime(document.getElementById('date'),document.getElementById('time'))){
-
+        //if both the number and date are valid
+        //get the current user
+        console.log('all true');
+        var table = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                people: document.getElementById('people').value,
+                message: document.getElementById('message').value,
+                email: document.getElementById('email').value
+            }
+            console.log(table);
+        
+        var tables = JSON.parse(localStorage.getItem('reservations'));
+        if(tables == null){
+            tables = [];
+        }
+        tables.push(table);
+        localStorage.setItem('reservations',JSON.stringify(tables));
+        alert('Table Reserved');
+        //clear all inputs
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('time').value = '';
+        document.getElementById('people').value = '';
+        document.getElementById('message').value = '';
+        document.getElementById('email').value = '';
     }
 
-    
+
         
 
 });

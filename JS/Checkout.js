@@ -1,35 +1,3 @@
-var verifyNumber = (number) => {
-var regex = /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/;//regex gernated by chatGPT to test pakistani mobile numbers
-
-if(regex.test(number.value)){//testing the value against the regex to verify that the value conforms
-     //show invalid input message
-     number.setCustomValidity("");//sets the control's validity as valid
-     return true;
-}
-else{
-     
-     //set field invalid
-     number.setCustomValidity('Invalid Phone Number');//if the value does not conform then marks the control as invalid
-
-     return false;
-
-}    
-    
-}
-
-
-var verifyAddress = () =>{//method to veify address
-     var address = document.getElementById('address');
-     if(address.value.length > 0 && address.value != ' '){//check if the address is empty or not
-          address.setCustomValidity("");//mark the field as valid
-          return true;
-     }
-     else{
-          address.setCustomValidity('please enter an address');//mark the field as invalid
-          return false;
-     }
-}
-
 var VerifyCard= (cardInput)=>{//method to verfy the card entered by the user
      //remove all - from cardInput's value
      var card = cardInput.value.replace(/-/g,'');//remove all the '-' in the value
@@ -82,8 +50,8 @@ document.getElementById('card').addEventListener("keydown",() => {//dynamically 
 
 
 document.getElementById('submit').addEventListener('click',() =>{//form submission event handler
-     if( verifyNumber(document.getElementById('phone')) && VerifyCard(document.getElementById('card')) &&
-         verifyAddress() && verifyExpiry(document.getElementById('expiry')) && verifyCVV(document.getElementById('cvv')) ){
+     if(VerifyCard(document.getElementById('card')) && verifyExpiry(document.getElementById('expiry'))
+      && verifyCVV(document.getElementById('cvv')) ){
                if(document.getElementById('toDeliver').value == 'delivery'){
                     window.location.href = '../Delivery.html';
                }

@@ -5,7 +5,10 @@
 * License: https://bootstrapmade.com/license/
 */
 
-const BuyNow = (id) => console.log('boughtnow');
+const BuyNow = (id) => {
+  AddtoCart(id);
+  window.parent.location.href = '../cart.html';
+};
 const AddtoCart = (id) =>{
   
   var cart = JSON.parse(localStorage.getItem('products'));
@@ -316,7 +319,7 @@ const AddtoCart = (id) =>{
         "name": "Espresso Shot",
         "price": 200,
         "url": "./assets/img/menu/espresso.jpg",
-        'categoy':'specialty',
+        'categoy':'Coffee',
         'ingredients': 'coffe beans',
       },
       {
@@ -324,15 +327,135 @@ const AddtoCart = (id) =>{
         "name": "Espresso Machiato",
         "price": 250,
         "url": "./assets/img/menu/espresso-machiato.jpg",
-        'categoy':'starters',
+        'categoy':'Coffee',
         'ingredients': 'coffe beans, cream, milk',
-      },{
+      },
+	
+{
         "id": 3,
-        "name": "Cappuchino",
+        "name": "Arabica",
+        "price": 450,
+        "url": "../assets/img/arabica.jpg",
+        'categoy':'Coffee',
+        'ingredients': 'Arabica beans, cream, milk',
+      },
+
+{
+        "id": 4,
+        "name": "Robusta",
+        "price": 400,
+        "url": "../assets/img/Robusta.jpg",
+        'categoy':'benas',
+        'ingredients': 'coffe beans',
+      },
+
+{
+        "id": 5,
+        "name": "Americano",
+        "price": 350,
+        "url": "../assets/img/americano.jpg",
+        'categoy':'Coffee',
+        'ingredients': 'coffe beans, cream, milk',
+      },
+
+
+{
+        "id": 6,
+        "name": "Latte",
         "price": 300,
-        "url": "./assets/img/menu/espresso-machiato.jpg",
-        'categoy':'main',
-        'ingredients': 'coffe beans, cream, milk, sugar',
+        "url": "../assets/img/latte.jpg",
+        'categoy':'Coffee',
+        'ingredients': 'coffe beans, cream, milk',
+      },
+
+
+{
+        "id": 7,
+        "name": "Macchiato",
+        "price": 650,
+        "url": "../assets/img/machiatto.jpg",
+        'categoy':'Coffee',
+        'ingredients': 'coffe beans, cream, milk',
+      },
+
+
+{
+        "id": 8,
+        "name": "Flat White",
+        "price": 500,
+        "url": "../assets/img/flatwhite-coffee.jpg",
+        'categoy':'Coffee',
+        'ingredients': 'coffe beans, cream, milk',
+      },
+
+
+{
+        "id": 9,
+        "name": "Custards",
+        "price": 1200,
+        "url": "../assets/img/custard.jpg",
+        'categoy':'desserts',
+        'ingredients': 'corn starch, cream, milk',
+      },
+
+
+{
+        "id": 10,
+        "name": "Deep-fried Cookie Dumplings",
+        "price": 750,
+        "url": "../assets/img/deepfried.jpg",
+        'categoy':'desserts',
+        'ingredients': 'cream, chocolate, milk',
+      },
+
+
+{
+        "id":11,
+        "name": "Gelatin",
+        "price": 1250,
+        "url": "../assets/img/gelatin.jpg",
+        'categoy':'desserts',
+        'ingredients': 'Gelatin, Marshmallows',
+      },
+
+
+{
+        "id": 12,
+        "name": "Banana cake with cream cheese",
+        "price": 950,
+        "url": "../assets/img/bananacake.jpg",
+        'categoy':'Cake',
+        'ingredients': 'Over-ripe Bananas, cream, cheese',
+      },
+
+
+{
+        "id": 13,
+        "name": "Chocolate coconut cake",
+        "price": 1000,
+        "url": "../assets/img/chocolatecake.jpg",
+        'categoy':'Cake',
+        'ingredients': 'Chocolate, Coconut, Baking Soda',
+      },
+
+
+{
+        "id": 14,
+        "name": "Lemon yoghurt cake with syrup",
+        "price": 750,
+        "url": "../assets/img/lemon.jpeg",
+        'categoy':'Cake',
+        'ingredients': 'Baking Soda,Lemon Juice, Eggs',
+      },
+
+
+{
+        "id": 15,
+        "name": "Chocolate mud cupcakes",
+        "price": 450,
+        "url": "../assets/img/chocolatemud.jpeg",
+        'categoy':'Cake',
+        'ingredients': 'Sour Cream,Brown Sugar, Dark Chocolate',
       },
 
     ]

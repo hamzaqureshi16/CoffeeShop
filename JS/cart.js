@@ -192,11 +192,29 @@ CalculateTotal();//total bill is calculated at the end
 
 
 var CheckOut = ()=>{
+  var checked;
+  var ele = document.getElementsByName('toDeliver');
+  for(i =0; i< ele.length; i++){
+    if(ele[i].checked){
+      checked = ele[i].value;
+    }
+  }
   if(JSON.parse(localStorage.getItem('currentUser')) !== null){
-    window.location.href = "../Delived.html";
+   
+    if(checked == 'delivery'){
+      window.location.href = "../Delived.html";
+    }
+    else{
+      window.location.href = "../DineIn.html";
+    }
   }
   else{
-    window.location.href = "../Checkout.html";
+    if(checked == 'delivery'){
+      window.location.href = "../Delivery.html";
+    }
+    else{
+      window.location.href = "../Checkout.html";
+    }
   }
 }
 window.addEventListener('load', showCart); // when window is loaded the cart is shown on the document

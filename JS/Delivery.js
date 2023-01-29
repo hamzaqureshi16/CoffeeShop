@@ -70,16 +70,19 @@ var checkEmpty = () => {
                 name: document.getElementById('name').value,
                 address: document.getElementById('address').value,
                 number: document.getElementById('phone').value,
-                instructions:document.getElementById('instruction')
+                instructions:document.getElementById('instruction'),
+                cart:JSON.parse(localStorage.getItem('products'))
                 
         }
 
-        //merge the cart object with data objecr
-        var cart = JSON.parse(localStorage.getItem('products'));
-        //use spread sytax too merge the objects
-        var merged = {...cart, ...data};
-        console.log(merged);
-        window.location.href = '../Delived.html';
+        var deliveries = JSON.parse(localStorage.getItem('deliveries'));
+        if(deliveries ===null){
+            deliveries = [];
+        }
+        deliveries.push(data);
+        localStorage.setItem('deliveries',JSON.stringify(deliveries));
+        localStorage.removeItem('products');
+        alert("Order Placed Successfully");
     }
   }
 }

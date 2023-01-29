@@ -29,13 +29,31 @@
     <label for="email">Email</label>
     <input type="email" name="email" id="email">
    
+    <label for="branch">Branch</label>
+    <select name="branch" id="branch">
+        <option value="Abbottabad" selected>Abbottabad</option>
+        <option value="Islamabad">Islamabad</option>
+        <option value="Lahore">Lahore</option>
+        <option value="Karachi">Karachi</option>
+        <option value="Sialkot">Sialkot</option>
+        <option value="Rawalpindi">Rawalpindi</option>
+    </select>
 
-  
     <label for="address">Address</label>
     <input type="text" name="address" id="address">
     
     <label for="contact">Contact</label>
     <input type="tel"  name="contact" id="contact">
+
+    <label for="card">Card</label>
+    <input type="text"  name="card" id="card" maxlength="19" required>
+
+    <label for="expiry">Expiry</label>
+    <input type="date" name="expiry" id="expiry" required>
+
+    <label for="cvv">CVV</label>
+    <input type="number" min="000" name="cvv" id="cvv" required>
+   
     
     <input type="submit" value="Sign Up" id="submit">
     </form>
