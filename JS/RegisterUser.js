@@ -88,7 +88,7 @@ var verifyNumber = (number) => {//method to verify the mobile number
 document.getElementById('submit').onclick = () => {
   console.log('submit')
    if(checkIfEmpty()){
-    if(verifyNumber(document.getElementById('contact')) && verifyPassword()){
+    if(verifyNumber(document.getElementById('contact')) && verifyPassword() && verifyAddres()){
       //make an object of the form data
       console.log('acced')
      //make an object of the form data and store it in localstorage

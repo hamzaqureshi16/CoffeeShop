@@ -17,8 +17,6 @@ var openCart = () =>{//if the cart icon is clicked open the user's cart
 }
 
 
-
-
 var verifyNumber = (number) => {//method to verify the mobile number
     var regex = /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/;//regex gernated by chatGPT to test pakistani mobile numbers
     
@@ -87,9 +85,9 @@ window.addEventListener('load', () => {
 
     var currentUser = JSON.parse(localStorage.getItem('currentUser'))
     if(currentUser !== null){
-        console.log(currentUser);
+        
 
-        console.log(document.getElementById('signupbtn'));
+       
         //remove the signupbtn and loginbtn
        var logoutbtn = document.getElementById("loginbtn");
        

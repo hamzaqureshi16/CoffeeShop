@@ -84,7 +84,12 @@ document.getElementById('card').addEventListener("keydown",() => {//dynamically 
 document.getElementById('submit').addEventListener('click',() =>{//form submission event handler
      if( verifyNumber(document.getElementById('phone')) && VerifyCard(document.getElementById('card')) &&
          verifyAddress() && verifyExpiry(document.getElementById('expiry')) && verifyCVV(document.getElementById('cvv')) ){
-          alert("form submitted");
+               if(document.getElementById('toDeliver').value == 'delivery'){
+                    window.location.href = '../Delivery.html';
+               }
+               else{
+                    window.location.href = '../Delived.html';
+               }
          }
 });
 

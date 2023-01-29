@@ -326,6 +326,13 @@ const AddtoCart = (id) =>{
         "url": "./assets/img/menu/espresso-machiato.jpg",
         'categoy':'starters',
         'ingredients': 'coffe beans, cream, milk',
+      },{
+        "id": 3,
+        "name": "Cappuchino",
+        "price": 300,
+        "url": "./assets/img/menu/espresso-machiato.jpg",
+        'categoy':'main',
+        'ingredients': 'coffe beans, cream, milk, sugar',
       },
 
     ]

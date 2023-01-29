@@ -24,7 +24,7 @@ function verifyCoupon(){//method to verify the user's coupon
 //make method to generate random coupon codes
 var generateCoupon = () => {
 
-  var couponText = ['hamza','bushra','hunnain','khansa','noor','bijli'];//names that coupon will be generated from
+  var couponText = ['hamza','bushra','hunnain','khansa','noor','thunderbolt'];//names that coupon will be generated from
   var coupon = [];//coupons will be stored here along with their discounts in the from of object (array of objects)
 
   for(let j = 0 ; j < Math.floor(Math.random() * 6) ; j++){//generating random number of coupons
@@ -196,7 +196,7 @@ var CheckOut = ()=>{
     window.location.href = "../Delived.html";
   }
   else{
-    window.location.href = "../Delivery.html";
+    window.location.href = "../Checkout.html";
   }
 }
 window.addEventListener('load', showCart); // when window is loaded the cart is shown on the document
