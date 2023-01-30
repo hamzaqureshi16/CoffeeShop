@@ -158,3 +158,6 @@ document.getElementById('tableform').addEventListener('submit',() =>{
         
 
 });
+
+
+console.log(document.getElementById('form-name-2'));
