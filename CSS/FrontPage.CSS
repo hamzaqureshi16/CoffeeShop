@@ -233,7 +233,9 @@ h6 {
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
 }
-
+.main:hover{
+  color: blue;
+}
 #header .logo a {
   color: #fff;
 }
@@ -242,6 +244,10 @@ h6 {
   max-height: 40px;
 }
 
+btn:hover{
+  background: #cda45e;
+  color: #fff;
+}
 /*--------------------------------------------------------------
 # Book a table button Menu
 --------------------------------------------------------------*/

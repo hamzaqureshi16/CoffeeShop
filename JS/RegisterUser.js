@@ -132,7 +132,7 @@ var verifyCVV = (CVV) =>{
 
 
 document.getElementById('submit').onclick = () => {
-  console.log('submit')
+ 
    if(checkIfEmpty()){
     if(verifyNumber(document.getElementById('contact')) && verifyPassword() && verifyAddres() && VerifyCard(document.getElementById('card')) && verifyExpiry(document.getElementById('expiry'))
     && verifyCVV(document.getElementById('cvv'))){
@@ -144,6 +144,7 @@ document.getElementById('submit').onclick = () => {
           name: document.getElementById('username').value,
           email: document.getElementById('email').value,
           password: document.getElementById('password').value,
+          branch: document.getElementById('branch').value,
           contact: document.getElementById('contact').value,
           address: document.getElementById('address').value,
           card: document.getElementById('card').value,
@@ -152,7 +153,7 @@ document.getElementById('submit').onclick = () => {
 
       }
       //check if an item name registeredusers is present in localstorage if not then make it
-      var users = localStorage.getItem('registeredUsers');
+      var users = JSON.parse(localStorage.getItem('registeredUsers'));
       if( users == null){
           users = [];
       }
