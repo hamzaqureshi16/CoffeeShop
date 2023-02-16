@@ -319,8 +319,8 @@ const AddtoCart = (id) =>{
         "name": "Espresso Shot",
         "price": 200,
         "url": "./assets/img/menu/espresso.jpg",
-        'categoy':'Coffee',
-        'ingredients': 'coffe beans',
+        "categoy":'Coffee',
+        "ingredients": "coffe beans",
       },
       {
         "id": 2,
